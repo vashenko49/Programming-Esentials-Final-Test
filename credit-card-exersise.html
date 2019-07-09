@@ -30,7 +30,46 @@ Cоздайте объект creditCard, с такими свойствами:
  <input type="number" id="money-sum">
  <button id="get-cash">Получить наличные</button>
  <p id="cash-request-result"></p>
- 
+
+
+<script>
+    let pinCode = document.getElementById('pin-code'),
+        moneySum = document.getElementById('money-sum'),
+        creditCard={
+        sum:10000,
+            pin:1234,
+            popotka:3,
+            status:'active',
+            getCash:function (pinCod,amountMoney) {
+                if(this.status !=='active'){
+                    alert(this.status+" card")
+                }
+                else {
+                    if(this.popotka<=0){
+                        this.status='disabled';
+                    }else {
+                        if(pinCod!==this.pin){
+                            this.popotka--;
+                            alert('no pin');
+                        }
+                        else {
+                            if(this.sum>=amountMoney){
+                                this.sum-=amountMoney;
+                                alert('take your money '+this.sum);
+                            }
+                            else {
+                                alert('not enough');
+                            }
+                        }
+                    }
+
+                }
+            }
+        };
+
+
+
+</script>
 </body>
 
 </html>
