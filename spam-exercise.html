@@ -18,9 +18,51 @@
 
     <input type="text" id="comment" placeholder="Ваш комментарий">
     <input type="text" id="spam-word" placeholder="Спам-слово">
+    <input type="text" id="amount-spam-word" placeholder="amount-Спам-слово">
+
     <button id="send-comment">Проверить на спам</button>
     <p id="spam-check-result"></p>
+<script>
+    let comment = document.getElementById('comment'),
+        spamWord = document.getElementById('spam-word'),
+        amountSpamWord = document.getElementById('amount-spam-word'),
+        sendComment = document.getElementById('send-comment');
 
+    function enterNumber(number) {
+        number = number.replace(',','.');
+        if(isNaN(number) ||!number){
+            return false;
+        }
+        return +number;
+    }
+    function enterStr(str) {
+        if(!str){
+            return false
+        }
+        return str;
+    }
+    sendComment.addEventListener('click',function () {
+       if(enterStr(comment.value)&&enterStr(spamWord.value)&&enterNumber(amountSpamWord.value)){
+           let amount=0;
+           let indexNext = comment.value.indexOf(spamWord.value,0);
+           if(indexNext>=0){
+                amount++;
+
+           }
+       }
+       else {
+           alert('error');
+       }
+    });
+    function find(string,str,ind ,index=0) {
+        let result = string.indexOf(str,ind);
+        if(result>=0){
+            find(string,str,result,index++);
+        }
+        return index;
+    }
+
+</script>
 </body>
 
 </html>

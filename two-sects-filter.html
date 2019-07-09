@@ -73,7 +73,19 @@
             age: "вечно молодой"
         }];
         */
-        
+        function arrayFilter(dogsFavor, catsFavor){
+            let answer=[];
+            for(let i =0;i<dogsFavor.length;i++){
+                for(let j=0;j<catsFavor.length;j++){
+                    if(!(dogsFavor[i].name===catsFavor[j].name&&dogsFavor[i].lastName===catsFavor[j].lastName)){
+                        answer.push(dogsFavor[i]);
+                        break;
+                    }
+                }
+            }
+            return answer;
+        }
+        const peopleInHeaven = arrayFilter(dogsFavor, catsFavor);
     </script>
 
 </body>
